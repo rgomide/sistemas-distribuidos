@@ -1,5 +1,6 @@
 # Sistemas distribuídos
 
 ## Sumário
-- [Introdução a Java RMI](./java-rmi/)
+- [Java RMI](./java-rmi/)
+- [gRPC](./java-rmi/)
 
