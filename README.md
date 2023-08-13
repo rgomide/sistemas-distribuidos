@@ -2,5 +2,5 @@
 
 ## Sumário
 - [Java RMI](./java-rmi/)
-- [gRPC](./java-rmi/)
+- [gRPC](./node-grpc/)
 
