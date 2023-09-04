@@ -14,44 +14,34 @@
     </form>
   </div>
   <% if (imoveis.length> 0) { %>
+  <div>
+    <h2>Últimos Imóveis</h2>
+    <% imoveis.forEach(function (imovel) { %>
     <div>
-      <h2>Últimos Imóveis</h2>
-      <% imoveis.forEach(function (imovel) { %>
-        <div>
-          <table>
-            <thead>
-              <td>Rua</td>
-              <td>Cidade</td>
-              <td>Estado</td>
-              <td>Número</td>
-              <td>Tipo</td>
-            </thead>
-            <% imoveis.forEach(function (imovel) { %>
-              <tbody>
-                <tr>
-                  <td>
-                    <%= imovel.rua %>
-                  </td>
-                  <td>
-                    <%= imovel.cidade %>
-                  </td>
-                  <td>
-                    <%= imovel.estado %>
-                  </td>
-                  <td>
-                    <%= imovel.numero %>
-                  </td>
-                  <td>
-                    <%= imovel.tipo %>
-                  </td>
-                </tr>
-                <% }) %>
-              </tbody>
-          </table>
-        </div>
-        <% }) %>
+      <table>
+        <thead>
+          <td>Rua</td>
+          <td>Cidade</td>
+          <td>Estado</td>
+          <td>Número</td>
+          <td>Tipo</td>
+        </thead>
+        <tbody>
+          <% imoveis.forEach(function (imovel) { %>
+          <tr>
+            <td><%= imovel.rua %></td>
+            <td><%= imovel.cidade %></td>
+            <td><%= imovel.estado %></td>
+            <td><%= imovel.numero %></td>
+            <td><%= imovel.tipo %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
     </div>
-    <% } %>
+    <% }) %>
+  </div>
+  <% } %>
 </body>
 
 </html>
