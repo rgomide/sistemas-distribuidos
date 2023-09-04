@@ -13,18 +13,19 @@
       <button type="submit">Pesquisar</button>
     </form>
   </div>
-  <% if (imoveis.length> 0) { %>
+  <% if (imoveis.length > 0) { %>
   <div>
     <h2>Últimos Imóveis</h2>
-    <% imoveis.forEach(function (imovel) { %>
     <div>
       <table>
         <thead>
-          <td>Rua</td>
-          <td>Cidade</td>
-          <td>Estado</td>
-          <td>Número</td>
-          <td>Tipo</td>
+          <tr>
+            <th>Rua</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Número</th>
+            <th>Tipo</th>
+          </tr>
         </thead>
         <tbody>
           <% imoveis.forEach(function (imovel) { %>
@@ -39,7 +40,6 @@
         </tbody>
       </table>
     </div>
-    <% }) %>
   </div>
   <% } %>
 </body>
