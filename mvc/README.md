@@ -10,7 +10,7 @@ A pasta [src](./src) possui os principais arquivos de código fonte da aplicaç�
 - [models/imoveis.js](./src/models/imoveis.js)
 - [views/imoveis](./src/views/imoveis/)
 
-## Executar o projeto
+## Executando o projeto
 
 Comando para executar o projeto:
 
