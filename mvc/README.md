@@ -4,7 +4,7 @@ Este projeto tem como objetivo mostrar uma aplicação organizada de acordo com 
 
 A pasta [src](./src) possui os principais arquivos de código fonte da aplicação. Cada camada está em sua respectiva pasta. Para fins de estudo, analise os arquivos na seguinte ordem:
 
-- [app.js](./src/app.js)
+- [app.js](./app.js)
 - [routes/imoveis.js](./src/routes/imoveis.js)
 - [controllers/imoveis.js](./src/controllers/imoveis.js)
 - [models/imoveis.js](./src/models/imoveis.js)
