@@ -21,4 +21,5 @@ npm start
 ## Referências
 - [Expressjs](https://expressjs.com/)
 - [Embedded JavaScript templating](https://ejs.co/)
+- [Node File System - fs](https://nodejs.org/api/fs.html)
 - [Faker.js JSON Generator](https://faker-generator.netlify.app/)
