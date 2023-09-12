@@ -28,7 +28,7 @@ div:has(a) {
 }
 
 a:visited, a:hover, a:active {
-  color: #0000ff;
+  color: #5c5cff;
 }
 
 table {
