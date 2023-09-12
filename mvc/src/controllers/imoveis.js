@@ -11,7 +11,7 @@ function index(req, res) {
 }
 
 function search(req, res) {
-  const { tipo } = req.query
+  const { tipo } = (req.method.toUpperCase() == 'GET') ? req.query : req.body
   const imoveis = getByTipo(tipo)
   res.render('imoveis/search-result', { imoveis: imoveis })
 }

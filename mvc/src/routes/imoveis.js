@@ -11,4 +11,8 @@ router.get('/imoveis/search', (req, res) => {
   imoveis.search(req, res)
 })
 
+router.post('/imoveis/search', (req, res) => {
+  imoveis.search(req, res)
+})
+
 module.exports = router
