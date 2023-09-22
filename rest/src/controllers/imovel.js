@@ -1,3 +1,5 @@
+const imovelModel = require('../models/imovel')
+
 module.exports = {
   getAll,
   getById,
@@ -8,17 +10,7 @@ module.exports = {
 function getAll(req, res) {
   console.log('Consultando todos os imóveis')
 
-  const imoveis = [
-    {
-      id: 1,
-      rua: 'Vincenza Street',
-      cidade: 'Weberview',
-      estado: 'MN',
-      numero: '10279-9643',
-      tipo: 'casa'
-    }
-  ]
-
+  const imoveis = imovelModel.getAll()
   res.json(imoveis)
 }
 
@@ -27,16 +19,13 @@ function getById(req, res) {
 
   console.log(`Consultando imóvel id = ${id}`)
 
-  const imovel = {
-    id: id,
-    rua: 'Vincenza Street',
-    cidade: 'Weberview',
-    estado: 'MN',
-    numero: '10279-9643',
-    tipo: 'casa'
-  }
+  const imovel = imovelModel.getById(id)
 
-  res.json(imovel)
+  if (imovel) {
+    res.json(imovel)
+  } else {
+    res.sendStatus(404)
+  }
 }
 
 function remove(req, res) {
@@ -44,6 +33,7 @@ function remove(req, res) {
 
   console.log(`Removendo imóvel id = ${id}`)
 
+  imovelModel.remove(id)
   res.sendStatus(200)
 }
 

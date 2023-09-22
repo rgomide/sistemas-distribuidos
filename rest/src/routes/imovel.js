@@ -1,4 +1,4 @@
-const imoveisController = require('../controllers/imoveis')
+const imoveisController = require('../controllers/imovel')
 
 const express = require('express')
 const router = express.Router()
