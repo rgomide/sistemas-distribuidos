@@ -43,12 +43,13 @@ function update(imovel) {
 
   const idx = imoveis.findIndex((item) => item.id == imovel.id)
 
-  console.log(idx)
-
-  if (idx >= 0) {
-    imoveis[idx] = imovel
-    saveFile(imoveis)
+  if (idx < 0) {
+    return false
   }
+
+  imoveis[idx] = imovel
+  saveFile(imoveis)
+  return true
 }
 
 function getNextId() {
