@@ -1,4 +1,7 @@
 const imovelModel = require('../models/imovel')
+const imovelSchema = require('../models/schemas/imovel')
+const Ajv = require("ajv")
+const ajv = new Ajv()
 
 module.exports = {
   getAll,
@@ -38,9 +41,15 @@ function remove(req, res) {
 }
 
 function save(req, res) {
-  const imovel = req.body
+  let imovel = req.body
 
-  console.log(`Salvando o imóvel "${JSON.stringify(imovel)}"`)
+  console.log('Salvando o imóvel:')
+  console.log(imovel)
 
-  res.json(imovel)
+  if (ajv.validate(imovelSchema, imovel)) {
+    imovel = imovelModel.save(imovel)
+    res.json(imovel)
+  } else {
+    res.status(500).json({ errors: ajv.errors })
+  }
 }

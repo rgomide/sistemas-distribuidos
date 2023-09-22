@@ -27,7 +27,35 @@ function getById(id) {
   const imoveis = getAll()
   return imoveis.find((imovel) => imovel.id == id)
 }
-function save() { }
+
+function save(imovel) {
+  const imoveis = getAll()
+  if (imovel.id) {
+
+  } else {
+    const id = getNextId()
+    imovel.id = id
+    imoveis.push(imovel)
+    saveFile(imoveis)
+  }
+}
+
+function getNextId() {
+  const imoveis = getAll()
+
+  let nextId = imoveis
+    .reduce((maior, imovel) => {
+      if (imovel.id > maior) {
+        return imovel.id
+      } else {
+        maior
+      }
+    }, 0)
+
+  nextId++
+
+  return nextId
+}
 
 function remove(id) {
   let imoveis = getAll()
