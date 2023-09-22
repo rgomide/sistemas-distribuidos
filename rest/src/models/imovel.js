@@ -8,16 +8,18 @@ module.exports = {
   remove
 }
 
-const path = `./data/imoveis.json`
+function getPath() {
+  return './data/imoveis.json'
+}
 
 function loadFile() {
-  const data = JSON.parse(fs.readFileSync(path, 'utf-8'))
+  const data = JSON.parse(fs.readFileSync(getPath(), 'utf-8'))
   return data.imoveis
 }
 
 function saveFile(imoveis) {
   const data = JSON.stringify({ imoveis: imoveis })
-  fs.writeFileSync(path, data)
+  fs.writeFileSync(getPath(), data)
 }
 
 function getAll() {
