@@ -48,4 +48,51 @@ describe('testes para models/imovel', () => {
 
   })
 
+  describe('getById', () => {
+
+    test('retorna um elemento existente', () => {
+      imovelModel.insert(createImovel({ id: 1, rua: "rua 001" }))
+
+      const imovel = imovelModel.getById(1)
+
+      expect(imovel).toEqual(
+        expect.objectContaining({ id: 1, rua: "rua 001" })
+      )
+    })
+
+    test('retorna undefined para um elemento inexistente', () => {
+      imovelModel.insert(createImovel({ id: 1, rua: "rua 001" }))
+
+      const imovel = imovelModel.getById(10)
+
+      expect(imovel).toBeUndefined()
+    })
+
+  })
+
+  describe('remove', () => {
+
+    test('remove um elemento existente', () => {
+      imovelModel.insert(createImovel({ id: 1, rua: "rua 001" }))
+
+      const isRemovido = imovelModel.remove(1)
+      expect(isRemovido).toEqual(true)
+
+      const imovel = imovelModel.getById(1)
+      expect(imovel).toBeUndefined()
+
+    })
+
+    test('não remove um elemento inexistente', () => {
+      imovelModel.insert(createImovel({ id: 1, rua: "rua 001" }))
+
+      const isRemovido = imovelModel.remove(10)
+      expect(isRemovido).toEqual(false)
+
+      const imoveis = imovelModel.getAll()
+      expect(imoveis.length).toEqual(1)
+    })
+
+  })
+
 })
