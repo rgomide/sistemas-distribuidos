@@ -3,7 +3,8 @@ const fs = require('fs')
 module.exports = {
   getAll,
   getById,
-  save,
+  insert,
+  update,
   remove
 }
 
@@ -28,14 +29,24 @@ function getById(id) {
   return imoveis.find((imovel) => imovel.id == id)
 }
 
-function save(imovel) {
+function insert(imovel) {
   const imoveis = getAll()
-  if (imovel.id) {
 
-  } else {
-    const id = getNextId()
-    imovel.id = id
-    imoveis.push(imovel)
+  imovel.id = getNextId()
+  imoveis.push(imovel)
+
+  saveFile(imoveis)
+}
+
+function update(imovel) {
+  const imoveis = getAll()
+
+  const idx = imoveis.findIndex((item) => item.id == imovel.id)
+
+  console.log(idx)
+
+  if (idx >= 0) {
+    imoveis[idx] = imovel
     saveFile(imoveis)
   }
 }

@@ -7,7 +7,8 @@ module.exports = {
   getAll,
   getById,
   remove,
-  save
+  insert,
+  update
 }
 
 function getAll(req, res) {
@@ -40,14 +41,31 @@ function remove(req, res) {
   res.sendStatus(200)
 }
 
-function save(req, res) {
+function insert(req, res) {
   let imovel = req.body
 
-  console.log('Salvando o imóvel:')
+  console.log('Criando o imóvel:')
   console.log(imovel)
 
   if (ajv.validate(imovelSchema, imovel)) {
-    imovel = imovelModel.save(imovel)
+    imovel = imovelModel.insert(imovel)
+    res.json(imovel)
+  } else {
+    res.status(500).json({ errors: ajv.errors })
+  }
+}
+
+function update(req, res) {
+  let imovel = req.body
+
+  console.log('Atualizando o imóvel:')
+  console.log(imovel)
+
+  const id = Number.parseInt(req.params.id)
+  imovel.id = id
+
+  if (ajv.validate(imovelSchema, imovel)) {
+    imovel = imovelModel.update(imovel)
     res.json(imovel)
   } else {
     res.status(500).json({ errors: ajv.errors })

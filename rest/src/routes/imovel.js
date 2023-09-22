@@ -12,11 +12,11 @@ router.get('/imoveis/:id', (req, res) => {
 })
 
 router.post('/imoveis', (req, res) => {
-  imoveisController.save(req, res)
+  imoveisController.insert(req, res)
 })
 
-router.put('/imoveis', (req, res) => {
-  imoveisController.save(req, res)
+router.put('/imoveis/:id', (req, res) => {
+  imoveisController.update(req, res)
 })
 
 router.delete('/imoveis/:id', (req, res) => {
