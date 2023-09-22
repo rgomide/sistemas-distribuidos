@@ -31,8 +31,13 @@ function getById(req, res) {
 function remove(req, res) {
   const id = req.params.id
 
-  imovelModel.remove(id)
-  res.sendStatus(200)
+  if (imovelModel.remove(id)) {
+    res.sendStatus(200)
+  } else {
+    res
+      .status(500)
+      .json({ errors: ['Registro não encontrado'] })
+  }
 }
 
 function insert(req, res) {
@@ -42,7 +47,9 @@ function insert(req, res) {
     imovel = imovelModel.insert(imovel)
     res.json(imovel)
   } else {
-    res.status(500).json({ errors: ajv.errors })
+    res
+      .status(500)
+      .json({ errors: ajv.errors })
   }
 }
 
@@ -56,9 +63,13 @@ function update(req, res) {
     if (imovelModel.update(imovel)) {
       res.json(imovel)
     } else {
-      res.status(500).json({ errors: ['Registro não encontrado'] })
+      res
+        .status(500)
+        .json({ errors: ['Registro não encontrado'] })
     }
   } else {
-    res.status(500).json({ errors: ajv.errors })
+    res
+      .status(500)
+      .json({ errors: ajv.errors })
   }
 }

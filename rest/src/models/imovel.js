@@ -71,6 +71,10 @@ function getNextId() {
 
 function remove(id) {
   let imoveis = getAll()
+  const tamanhoAnterior = imoveis.length
+
   imoveis = imoveis.filter((imovel) => imovel.id != id)
   saveFile(imoveis)
+
+  return tamanhoAnterior != imoveis.length
 }
