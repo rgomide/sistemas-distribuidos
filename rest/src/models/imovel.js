@@ -1,4 +1,5 @@
 const fs = require('fs')
+const paths = require('./paths')
 
 module.exports = {
   getAll,
@@ -8,18 +9,14 @@ module.exports = {
   remove
 }
 
-function getPath() {
-  return './data/imoveis.json'
-}
-
 function loadFile() {
-  const data = JSON.parse(fs.readFileSync(getPath(), 'utf-8'))
+  const data = JSON.parse(fs.readFileSync(paths.IMOVEL, 'utf-8'))
   return data.imoveis
 }
 
 function saveFile(imoveis) {
   const data = JSON.stringify({ imoveis: imoveis })
-  fs.writeFileSync(getPath(), data)
+  fs.writeFileSync(paths.IMOVEL, data)
 }
 
 function getAll() {

@@ -1,13 +1,14 @@
 const fs = require('fs')
-const rewire = require('rewire')
-const imovelModel = rewire('../../src/models/imovel')
-const { createImovel } = require('../factories/imovel')
-
+const imovelModel = require('../../../src/models/imovel')
+const { createImovel } = require('../../factories/imovel')
 
 const path = './data/imoveisTest.json'
 
-const mockGetPath = jest.fn(() => path)
-imovelModel.__set__('getPath', mockGetPath)
+jest.mock('../../../src/models/paths', () => {
+  return {
+    IMOVEL: path
+  }
+})
 
 describe('testes para models/imovel', () => {
 
