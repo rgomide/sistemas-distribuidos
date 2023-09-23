@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "jest",
-    "test-coverage": "jest --coverage --no-cache --config=tests/jest.config.js"
+    "test-coverage": "jest --coverage --config=tests/jest.config.js"
   },
   "author": "",
   "license": "ISC",
