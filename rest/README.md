@@ -27,3 +27,9 @@ npm run test
 ```bash
 npm run test-coverage
 ```
+
+## Referências
+- [Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+- [Express](https://expressjs.com/)
+- [Jest](https://jestjs.io/)
+- [Faker-js](https://fakerjs.dev/)
