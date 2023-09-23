@@ -4,7 +4,7 @@ const app = require('../../../app')
 const { createImovel } = require('../../factories/imovel')
 const imovelModel = require('../../../src/models/imovel')
 
-const path = './data/imoveisTest.json'
+const path = './data/imoveisControllerTest.json'
 
 jest.mock('../../../src/models/paths', () => {
   return {
