@@ -1,8 +1,10 @@
-const { faker } = require('@faker-js/faker');
+const { pt_BR, Faker } = require('@faker-js/faker');
 
 module.exports = {
   createImovel
 }
+
+const faker = new Faker({ locale: [pt_BR] })
 
 function createImovel(imovel) {
   return {
@@ -11,7 +13,7 @@ function createImovel(imovel) {
     cidade: faker.location.city(),
     estado: faker.location.state({ abbreviated: true }),
     numero: faker.location.buildingNumber(),
-    tipo: (faker.number.int() % 2 == 0) ? 'casa' : 'apartamento',
+    tipo: faker.helpers.arrayElement(['casa', 'apartamento', 'comercial']),
     ...imovel
   }
 
