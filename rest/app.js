@@ -4,10 +4,8 @@ const imoveis = require('./src/routes/imovel')
 const app = express()
 
 app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 
 app.use(imoveis)
 
-app.listen(3000, () => {
-  console.log('Aplicação executando na porta 3000')
-})
+module.exports = app

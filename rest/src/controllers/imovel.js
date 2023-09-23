@@ -35,7 +35,7 @@ function remove(req, res) {
     res.sendStatus(200)
   } else {
     res
-      .status(500)
+      .status(404)
       .json({ errors: ['Registro não encontrado'] })
   }
 }
@@ -64,7 +64,7 @@ function update(req, res) {
       res.json(imovel)
     } else {
       res
-        .status(500)
+        .status(404)
         .json({ errors: ['Registro não encontrado'] })
     }
   } else {

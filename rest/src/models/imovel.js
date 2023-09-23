@@ -10,8 +10,12 @@ module.exports = {
 }
 
 function loadFile() {
-  const data = JSON.parse(fs.readFileSync(paths.IMOVEL, 'utf-8'))
-  return data.imoveis
+  if (fs.existsSync(paths.IMOVEL)) {
+    const { imoveis = [] } = JSON.parse(fs.readFileSync(paths.IMOVEL, 'utf-8'))
+    return imoveis
+  } else {
+    return []
+  }
 }
 
 function saveFile(imoveis) {
