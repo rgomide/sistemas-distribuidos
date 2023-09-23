@@ -108,13 +108,16 @@ describe('testes para models/imovel', () => {
       }
 
       imovel = imovelModel.insert(imovel)
-      const imoveis = imovelModel.getAll()
+      const imoveis = imovelModel.getById(imovel.id)
 
-      expect(imovel.id).toEqual(1)
-
-      expect(imoveis).toEqual([
-        imovel
-      ])
+      expect(imovel).toEqual({
+        id: imovel.id,
+        rua: 'rua 01',
+        cidade: 'trindade',
+        estado: 'GO',
+        numero: '123',
+        tipo: 'apartamento'
+      })
     })
 
   })
