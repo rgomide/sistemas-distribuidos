@@ -1,8 +1,9 @@
-module.exports = (req, _res, next) => {
-  console.log('\nURL', req.originalUrl)
-  console.log('METHOD', req.method)
-  console.log('PARAMS', req.params)
-  console.log('BODY', req.body)
-
+module.exports = (req, res, next) => {
+  console.log('REQUEST')
+  console.log(req.method, req.originalUrl)
+  console.log('params =>', req.params)
+  console.log('body =>', req.body)
+  console.log('')
+  
   next()
 }
