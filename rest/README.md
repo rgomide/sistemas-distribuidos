@@ -8,7 +8,13 @@ Foi utilizado um estilo arquitetônico Model View Controller (MVC) para a organi
 
 Os testes foram implementados utilizando a biblioteca [Jest](https://jestjs.io/).
 
-## Commandos
+## Comandos
+
+### Instalar as dependências
+
+```bash
+npm install
+```
 
 ### Executar a aplicação
 
