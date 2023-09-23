@@ -11,7 +11,7 @@ module.exports = {
   update
 }
 
-function getAll(req, res) {
+function getAll(_req, res) {
   const imoveis = imovelModel.getAll()
   res.json(imoveis)
 }
