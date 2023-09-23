@@ -38,6 +38,8 @@ function insert(imovel) {
   imoveis.push(imovel)
 
   saveFile(imoveis)
+
+  return imovel
 }
 
 function update(imovel) {
@@ -46,12 +48,18 @@ function update(imovel) {
   const idx = imoveis.findIndex((item) => item.id == imovel.id)
 
   if (idx < 0) {
-    return false
+    return undefined
   }
 
-  imoveis[idx] = imovel
+  imovelAtualizado = {
+    ...imoveis[idx],
+    ...imovel
+  }
+
+  imoveis[idx] = imovelAtualizado
   saveFile(imoveis)
-  return true
+
+  return imovelAtualizado
 }
 
 function getNextId() {
