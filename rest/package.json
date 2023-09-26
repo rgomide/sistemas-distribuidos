@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest",
+    "test": "jest --config=tests/jest.config.js",
     "test-coverage": "jest --coverage --config=tests/jest.config.js"
   },
   "author": "",

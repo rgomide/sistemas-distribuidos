@@ -2,7 +2,8 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  collectCoverage: true,
+  collectCoverage: false,
+  verbose: true,
   collectCoverageFrom: [
     '../**/*.js',
     "**/*.js",
