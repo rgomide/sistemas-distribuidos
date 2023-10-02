@@ -54,9 +54,9 @@ A API deve ter suporte para realizar as seguintes operações básicas:
 
 ### Novas funcionalidades
 
-- Crie um recurso `POST /imovel/:id_imovel/proprietario/:id_proprietario` que associa um proprietário a um imóvel.
+- Crie um recurso `POST /imovel/:imovelId/proprietario/:proprietarioId` que associa um proprietário a um imóvel.
 - As ações de recuperar imóvel devem ser alteradas para mostrar os proprietários associados quando houver.
-- Crie um recurso `DELETE /imovel/:id_imovel/proprietario/:id_proprietario` que remove uma associação entre imóvel e proprietário.
+- Crie um recurso `DELETE /imovel/:imovelId/proprietario/:proprietarioId` que remove uma associação entre imóvel e proprietário.
 
 ### Testes
 
