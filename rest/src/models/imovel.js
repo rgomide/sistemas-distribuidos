@@ -71,7 +71,7 @@ function getNextId() {
       if (imovel.id > maior) {
         return imovel.id
       } else {
-        maior
+        return maior
       }
     }, 0)
 
