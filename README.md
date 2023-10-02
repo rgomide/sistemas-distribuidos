@@ -6,3 +6,4 @@
 - [gRPC](./node-grpc/)
 - [socket.io](./socket/)
 - [MVC](./mvc/)
+- [REST](./rest/)
