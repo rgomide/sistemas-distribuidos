@@ -13,6 +13,8 @@
 
 ## Windows
 
+Faça o download do [Apache Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz) e descompate os arquivos na pasta `C:\kafka`.
+
 ### Iniciar Zookeeper
 
 Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
