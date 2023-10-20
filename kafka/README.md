@@ -25,23 +25,15 @@ Faça o download do [Apache Kafka](https://www.apache.org/dyn/closer.cgi?path=/k
 - Windows: descompate os arquivos na pasta `C:\kafka`.
 - Linux/macOS: descompate os arquivos na pasta `~/kafka`.
 
+## Windows
+
+### Iniciar Zookeeper
+
 Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
 
 ```
 dataDir=C:\kafka\zookeeper-data
 ```
-
-Modifique as seguintes propriedades do arquivo `config\server.properties` para:
-
-```
-log.dirs=C:\kafka\kafka-logs
-offsets.topic.num.partitions=1
-log.segment.bytes=20000000
-```
-
-## Windows
-
-### Iniciar Zookeeper
 
 Inicialize o serviço executando o comando:
 
@@ -51,6 +43,14 @@ cd C:\kafka
 ```
 
 ### Iniciar Kafka Broker
+
+Modifique as seguintes propriedades do arquivo `config\server.properties` para:
+
+```
+log.dirs=C:\kafka\kafka-logs
+offsets.topic.num.partitions=1
+log.segment.bytes=20000000
+```
 
 Inicialize o serviço executando o comando:
 
@@ -86,6 +86,12 @@ cd C:\kafka
 
 ### Iniciar Zookeeper
 
+Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
+
+```
+dataDir=C:\kafka\zookeeper-data
+```
+
 Inicialize o serviço executando o comando:
 
 ```
@@ -94,6 +100,14 @@ cd ~/kafka
 ```
 
 ### Iniciar Kafka Broker
+
+Modifique as seguintes propriedades do arquivo `config\server.properties` para:
+
+```
+log.dirs=./kafka-logs
+offsets.topic.num.partitions=1
+log.segment.bytes=20000000
+```
 
 Inicialize o serviço executando o comando:
 
