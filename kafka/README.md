@@ -140,5 +140,5 @@ cd ~/kafka
 ```
 
 ## Referências
-- [Primeiros passos](https://kafka.apache.org/quickstart)
+- [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)
 - [Download Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz)
