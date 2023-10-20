@@ -1,3 +1,16 @@
+# Kafka Playground
+
+## Sumário
+
+- [Windows](#windows)
+  - [Iniciar Zookeeper](#iniciar-zookeeper)
+  - [Iniciar Kafka Broker](#iniciar-kafka-broker)
+  - [Criar novo tópico](#criar-um-novo-tópico)
+  - [Primeiros testes](#primeiros-testes)
+    - [Producer](#producer)
+    - [Consumer](#consumer)
+- [Linux/MacOS](#linuxmacos)
+
 ## Windows
 
 ### Iniciar Zookeeper
@@ -37,20 +50,24 @@ cd C:\kafka
 .\bin\windows\kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092
 ```
 
-### Testando
+### Primeiros testes
 
-- Producer
+#### Producer
 
 ```
 cd C:\kafka
 .\bin\windows\kafka-console-producer.bat --topic meu-topico --bootstrap-server localhost:9092
 ```
 
-- Consumer
+#### Consumer
 
 ```
 cd C:\kafka
 .\bin\windows\kafka-console-consumer.bat --topic meu-topico --from-beginning --bootstrap-server localhost:9092
 ```
 
-## MacOS
+## Linux/MacOS
+
+## Referências
+- [Primeiros passos](https://kafka.apache.org/quickstart)
+- [Download Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz)
