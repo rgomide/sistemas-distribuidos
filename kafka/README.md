@@ -33,6 +33,7 @@ cd C:\kafka
 ### Criar um novo tópico
 
 ```
+cd C:\kafka
 .\bin\windows\kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092
 ```
 
