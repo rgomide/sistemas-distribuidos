@@ -89,7 +89,7 @@ cd C:\kafka
 Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
 
 ```
-dataDir=C:\kafka\zookeeper-data
+dataDir=./zookeeper-logs
 ```
 
 Inicialize o serviço executando o comando:
