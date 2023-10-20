@@ -4,15 +4,15 @@
 
 - [Configurações](#configurações)
 - [Windows](#windows)
-  - [Iniciar Zookeeper](#iniciar-zookeeper)
-  - [Iniciar Kafka Broker](#iniciar-kafka-broker)
+  - [Zookeeper](#zookeeper)
+  - [Kafka Broker](#kafka-broker)
   - [Criar novo tópico](#criar-um-novo-tópico)
   - [Primeiros testes](#primeiros-testes)
     - [Producer](#producer)
     - [Consumer](#consumer)
 - [Linux/macOS](#linuxmacos)
-  - [Iniciar Zookeeper](#iniciar-zookeeper-1)
-  - [Iniciar Kafka Broker](#iniciar-kafka-broker-1)
+  - [Zookeeper](#zookeeper-1)
+  - [Kafka Broker](#kafka-broker-1)
   - [Criar novo tópico](#criar-um-novo-tópico-1)
   - [Primeiros testes](#primeiros-testes-1)
     - [Producer](#producer-1)
@@ -27,7 +27,7 @@ Faça o download do [Apache Kafka](https://www.apache.org/dyn/closer.cgi?path=/k
 
 ## Windows
 
-### Iniciar Zookeeper
+### Zookeeper
 
 Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
 
@@ -42,7 +42,7 @@ cd C:\kafka
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 ```
 
-### Iniciar Kafka Broker
+### Kafka Broker
 
 Modifique as seguintes propriedades do arquivo `config\server.properties` para:
 
@@ -84,7 +84,7 @@ cd C:\kafka
 
 ## Linux/macOS
 
-### Iniciar Zookeeper
+### Zookeeper
 
 Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
 
@@ -99,7 +99,7 @@ cd ~/kafka
 ./bin/zookeeper-server-start.sh ./config/zookeeper.properties
 ```
 
-### Iniciar Kafka Broker
+### Kafka Broker
 
 Modifique as seguintes propriedades do arquivo `config\server.properties` para:
 
