@@ -4,12 +4,14 @@
   "description": "## Sumário",
   "main": "index.js",
   "scripts": {
+    "consumer": "node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.2",
     "kafkajs": "^2.2.4"
   }
 }
