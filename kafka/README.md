@@ -26,7 +26,7 @@ Além disso, temos um módulo que consome todos os eventos publicados.
 
 A Figura a seguir apresenta um esquema deste projeto:
 
-<img src="./projectStructure.png"/>
+<img src="./assets/projectStructure.png"/>
 
 ## Configurações
 
