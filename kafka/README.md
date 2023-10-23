@@ -2,6 +2,7 @@
 
 ## Sumário
 
+- [Estrutura do projeto](#estrutura-do-projeto)
 - [Configurações](#configurações)
 - [Windows](#windows)
   - [Zookeeper](#zookeeper)
