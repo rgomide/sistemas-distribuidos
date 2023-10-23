@@ -9,7 +9,7 @@ app.post('/enviar-mensagem', async (req, res) => {
   const mensagem = req.body
   try {
     await enviarMensagem(mensagem)
-    res.send('Mensagem enviada com sucesso!')
+    res.status(200).send('Mensagem enviada com sucesso!')
   } catch (erro) {
     res.status(500).json(erro)
   }
