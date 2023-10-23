@@ -18,6 +18,16 @@
     - [Producer](#producer-1)
     - [Consumer](#consumer-1)  
 
+## Estrutura do projeto
+
+O projeto de exemplo consiste em uma aplicação que disponibiliza um enpoint `POST /enviar-mensagem` e publica uma mensagem no stream de eventos.
+
+Além disso, temos um módulo que consome todos os eventos publicados.
+
+A Figura a seguir apresenta um esquema deste projeto:
+
+<img src="./projectStructure.drawio.png"/>
+
 ## Configurações
 
 Faça o download do [Apache Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz).
@@ -142,3 +152,4 @@ cd ~/kafka
 ## Referências
 - [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)
 - [Download Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz)
+- [KafkaJS library](https://kafka.js.org/)
