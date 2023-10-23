@@ -1,6 +1,7 @@
+const uuid = require('uuid')
 const kafka = require('../config/kafka-connector')
 
-const consumer = kafka.consumer({ groupId: 'group-01' })
+const consumer = kafka.consumer({ groupId: uuid.v4() })
 
 const consumerModule = async () => {
   await consumer.connect()
