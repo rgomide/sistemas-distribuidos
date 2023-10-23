@@ -1,4 +1,4 @@
-const kafka = require('./config/kafka-connector')
+const kafka = require('../config/kafka-connector')
 
 const consumer = kafka.consumer({ groupId: 'group-01' })
 
