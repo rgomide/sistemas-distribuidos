@@ -1,6 +1,7 @@
 package gomide;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class HeavyProcess {
 
@@ -12,7 +13,7 @@ public class HeavyProcess {
     Random random = new Random();
     int milisegundos = random.nextInt(3000);
 
-    Thread.sleep(milisegundos);
+    TimeUnit.MILLISECONDS.sleep(milisegundos);
 
     long tempoFim = System.currentTimeMillis() - tempoInicio;
 

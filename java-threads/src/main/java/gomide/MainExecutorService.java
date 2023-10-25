@@ -29,9 +29,9 @@ public class MainExecutorService {
     if (executou) {
       System.out.println(String.format("FIM - SUCESSO em %dms", tempoFim));
     } else {
+      executor.shutdownNow();
       System.out.println(String.format("FIM - TIMEOUT em %dms", tempoFim));
     }
-
   }
 
 }
