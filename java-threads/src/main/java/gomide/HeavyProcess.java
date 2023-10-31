@@ -6,6 +6,10 @@ import java.util.concurrent.TimeUnit;
 public class HeavyProcess {
 
   public static void justDoIt(int id) throws InterruptedException {
+    justDoIt(id, false);
+  }
+
+  public static void justDoIt(int id, boolean silent) throws InterruptedException {
     System.out.println(String.format("Processo iniciado para id: %d", id));
 
     long tempoInicio = System.currentTimeMillis();
@@ -17,7 +21,10 @@ public class HeavyProcess {
 
     long tempoFim = System.currentTimeMillis() - tempoInicio;
 
-    System.out.println(String.format("Processo finalizado para id: %d em %dms", id, tempoFim));
+    if (!silent) {
+      System.out.println(String.format("Processo finalizado para id: %d em %dms",
+          id, tempoFim));
+    }
   }
 
 }
