@@ -14,7 +14,7 @@ public class MainPriorityQueue {
 
     Random random = new Random();
     for (int i = 0; i < 50; i++) {
-      queue.offer(random.nextInt(2000));
+      queue.put(random.nextInt(2000));
     }
 
     List<Thread> threads = new ArrayList<Thread>();
