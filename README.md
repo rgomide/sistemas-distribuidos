@@ -9,3 +9,4 @@
 - [REST](./rest/)
 - [Kafka](./kafka/)
 - [Threads](./java-threads/)
+- [Threads Bloqueadas](./blocking-threads/)
