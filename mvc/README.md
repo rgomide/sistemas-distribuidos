@@ -44,3 +44,4 @@ Nesta primeira etapa, a sua aplicação deve apenas exibir as tarefas existentes
 - [Embedded JavaScript templating](https://ejs.co/)
 - [Node File System - fs](https://nodejs.org/api/fs.html)
 - [Faker.js JSON Generator](https://faker-generator.netlify.app/)
+- [HTML Tutorial](https://www.w3schools.com/html/)
