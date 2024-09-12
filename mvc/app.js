@@ -1,5 +1,6 @@
 const express = require('express')
 const imoveis = require('./src/routes/imoveis')
+const tarefas = require('./src/routes/tarefas')
 
 const app = express()
 
@@ -10,6 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded())
 
 app.use(imoveis)
+app.use(tarefas)
 
 app.use(express.static(__dirname + '/public'))
 

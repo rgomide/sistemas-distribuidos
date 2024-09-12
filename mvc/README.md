@@ -18,6 +18,27 @@ Comando para executar o projeto:
 npm start
 ```
 
+## Exercícios
+
+### 1. Lista de tarefas
+
+Desenvolva uma aplicação com arquitetura em camadas (MVC) que faça o gerenciamento de uma lista de tarefas de acordo com as etapas a seguir.
+
+#### 1.1 Configuração inicial
+
+Crie um arquivo `.json` para a lista de tarefas populados com dados iniciais. Modele o objeto que representa as tarefas de forma que seja possível idenficar uma tarefa específica, exibir um título e verificar se ela já foi concluída.
+
+Crie os módulos necessários para manipular tarefas como rotas, controlador, modelo e visão nos seus respectivos diretórios.
+
+A aplicação terá apenas um template HTML que permite adicionar, remover ou marcar uma tarefa como concluída de acordo com o protótipo a seguir.
+
+<p align="center">
+  <img src="../assets/img/2024-09-12-16-07-23.png"/>
+</p>
+
+Nesta primeira etapa a sua aplicação deve apenas exibir as tarefas existes, ou seja, não precisa implementar nenhuma operação que modifica a lista de tarefas.
+
+
 ## Referências
 - [Expressjs](https://expressjs.com/)
 - [Embedded JavaScript templating](https://ejs.co/)
