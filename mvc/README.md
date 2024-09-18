@@ -38,6 +38,18 @@ A aplicação terá apenas um template HTML que permite adicionar, remover ou ma
 
 Nesta primeira etapa, a sua aplicação deve apenas exibir as tarefas existentes. Ou seja, não é necessário implementar nenhuma operação que modifique a lista de tarefas.
 
+#### 1.2 Operações no back-end
+
+Implemente as operações de `criar tarefa`, `alternar status de uma tarefa` e `excluir` tarefa no lado do back-end. Manipule o arquivo `.json` da lista de tarefas com o uso da biblioteca [fs](https://nodejs.org/api/fs.html).
+
+##### Exemplo de manipulação de arquivos 
+```javascript
+// Recuperar informações do arquivo
+const { tarefas } = JSON.parse(fs.readFileSync('./data/tarefas.json', 'utf8'))
+
+// Sobrescrever o conteúdo de um arquivo com um array de tarefas
+fs.writeFileSync('./data/tarefas.json', JSON.stringify({ tarefas: tarefas }))
+```
 
 ## Referências
 - [Expressjs](https://expressjs.com/)
