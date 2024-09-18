@@ -22,21 +22,32 @@
             <% tarefas.forEach(function (tarefa) { %>
               <tr>
                 <td>
-                  <% let checkBoxId=`check-${tarefa.id}` %>
-                    <input type="checkbox" id="<%= checkBoxId %>" name="<%= checkBoxId %>" <%=tarefa.concluida
-                      ? 'checked' : '' %>
-                    />
-                    <label for="<%= checkBoxId %>">
-                      <%= tarefa.titulo %>
-                    </label>
+                  <% 
+                    const linkAlternarStatus = `/tarefas/${tarefa.id}/alternar-status` 
+                    const linkExcluir = `/tarefas/${tarefa.id}/excluir` 
+                    const lineThrough = (tarefa.concluida) ? 'line-through' : 'decoration-none'
+                    const tarefaConcluida = tarefa.concluida ? 'checked' : ''
+                  %>
+
+                  <input
+                    type="checkbox"
+                    disabled
+                    <%= tarefaConcluida %>
+                  />
+                  <a 
+                    href="<%= linkAlternarStatus %>" 
+                    class="<%= lineThrough %>"
+                  >
+                    <%= tarefa.titulo %>
+                  </a>
                 </td>
                 <td>
-                  <a href="#">
+                  <a href="<%= linkExcluir %>">
                     <img src="/img/trash.svg" width="16" height="16" />
                   </a>
                 </td>
               </tr>
-              <% }) %>
+            <% }) %>
           </tbody>
         </table>
       </div>

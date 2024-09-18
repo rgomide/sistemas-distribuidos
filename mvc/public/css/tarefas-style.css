@@ -5,11 +5,16 @@
 
 body {
   background-color: rgb(206, 255, 215);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 900px;
   gap: 10px;
 }
 
@@ -50,4 +55,20 @@ form button {
 
 input[type="checkbox"] {
   accent-color: rgb(123, 164, 130);
+}
+
+table {
+  width: 600px;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+a, a:visited {
+  color: black;
 }
