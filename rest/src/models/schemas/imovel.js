@@ -1,7 +1,7 @@
 module.exports = {
   type: 'object',
   properties: {
-    rua: { type: 'string' },
+    rua: { type: ['string', 'null'] },
     cidade: { type: 'string' },
     estado: { type: 'string' },
     numero: { type: 'string' },
