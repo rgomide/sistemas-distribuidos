@@ -9,8 +9,15 @@ const consumerModule = async () => {
 
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
+      const decodedMessageValue = message.value.toString()
+      let parsedMessage = decodedMessageValue
 
-      const parsedMessage = JSON.parse(message.value)
+      try {
+        parsedMessage = JSON.parse(decodedMessageValue)
+      } catch (error) {
+        
+      }
+
       const time = new Date(Number.parseInt(message.timestamp)).toISOString()
 
       console.log(`Topic: ${topic}`)
