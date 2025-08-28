@@ -26,6 +26,8 @@ function main() {
     }
   );
 
+  console.log("\n");
+
   const alunoConsulta = { matricula: 123 }
   console.log("Request:", alunoConsulta);
   

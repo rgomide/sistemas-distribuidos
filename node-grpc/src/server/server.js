@@ -49,7 +49,6 @@ async function main() {
       if (err) {
         console.error(err)
       } else {
-        server.start();
         console.log("Server is running");
       }
     });
