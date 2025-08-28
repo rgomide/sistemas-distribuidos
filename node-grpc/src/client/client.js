@@ -17,14 +17,19 @@ function main() {
     grpc.credentials.createInsecure()
   );
 
+  const aluno = { email: "criar@aluno.com", nome: "NovoAluno", matricula: "123456" }
+  console.log("Request:", aluno);
   client.criarAluno(
-    { email: "criar@aluno.com", nome: "NovoAluno", matricula: "123456" },
+    aluno,
     function (err, response) {
       console.log("Response:", response);
     }
   );
 
-  client.getAlunoByMatricula({ matricula: 123 }, function (err, response) {
+  const alunoConsulta = { matricula: 123 }
+  console.log("Request:", alunoConsulta);
+  
+  client.getAlunoByMatricula(alunoConsulta, function (err, response) {
     console.log("Response:", response);
   });
 }
