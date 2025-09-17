@@ -12,7 +12,6 @@
     - [Producer](#producer)
     - [Consumer](#consumer)
 - [Linux/macOS](#linuxmacos)
-  - [Zookeeper](#zookeeper-1)
   - [Kafka Broker](#kafka-broker-1)
   - [Criar novo tópico](#criar-um-novo-tópico-1)
   - [Primeiros testes](#primeiros-testes-1)
@@ -31,40 +30,37 @@ A Figura a seguir apresenta um esquema deste projeto:
 
 ## Configurações
 
-Faça o download do [Apache Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz).
+Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz).
 
 - Windows: descompate os arquivos na pasta `C:\kafka`.
 - Linux/macOS: descompate os arquivos na pasta `~/kafka`.
 
 ## Windows
 
-### Zookeeper
-
-Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
-
-```
-dataDir=C:\kafka\zookeeper-data
-```
-
-Inicialize o serviço executando o comando:
-
-```
-cd C:\kafka
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-```
-
 ### Kafka Broker
 
 Modifique as seguintes propriedades do arquivo `config\server.properties` para:
 
 ```
-log.dirs=C:\kafka\kafka-logs
+log.dirs=./kafka-logs
 offsets.topic.num.partitions=1
 log.segment.bytes=20000000
 ```
 
-Inicialize o serviço executando o comando:
+Formatar o diretório de logs do Kafka:
+```
+cd C:\kafka
+.\bin\windows\kafka-storage.bat format -t $(.\bin\windows\kafka-storage.bat random-uuid) -c .\config\server.properties --standalone
 
+```
+
+Editar o arquivo `.\bin\windows\kafka-server-start.bat` com as seguintes instruções:
+- Adicione a palavra `rem` na linha `wmic os get osarchitecture | find /i "32-bit" >nul 2>&1`, ficando assim:
+```
+rem wmic os get osarchitecture | find /i "32-bit" >nul 2>&1
+```
+
+Inicialize o serviço executando o comando:
 ```
 cd C:\kafka
 .\bin\windows\kafka-server-start.bat .\config\server.properties
@@ -95,33 +91,23 @@ cd C:\kafka
 
 ## Linux/macOS
 
-### Zookeeper
-
-Modifique a propriedade `dataDir` do arquivo `config\zookeeper.properties` para:
-
-```
-dataDir=./zookeeper-logs
-```
-
-Inicialize o serviço executando o comando:
-
-```
-cd ~/kafka
-./bin/zookeeper-server-start.sh ./config/zookeeper.properties
-```
 
 ### Kafka Broker
 
 Modifique as seguintes propriedades do arquivo `config\server.properties` para:
-
 ```
 log.dirs=./kafka-logs
 offsets.topic.num.partitions=1
 log.segment.bytes=20000000
 ```
 
-Inicialize o serviço executando o comando:
+Formatar o diretório de logs do Kafka:
+```
+cd ~/kafka
+./bin/kafka-storage.sh format -t $(./bin/kafka-storage.sh random-uuid) -c ./config/server.properties --standalone
+```
 
+Inicialize o serviço executando o comando:
 ```
 cd ~/kafka
 ./bin/kafka-server-start.sh ./config/server.properties
@@ -152,5 +138,5 @@ cd ~/kafka
 
 ## Referências
 - [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)
-- [Download Kafka](https://www.apache.org/dyn/closer.cgi?path=/kafka/3.6.0/kafka_2.13-3.6.0.tgz)
+- [Download Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz)
 - [KafkaJS library](https://kafka.js.org/)
