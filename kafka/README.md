@@ -5,7 +5,6 @@
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Configurações](#configurações)
 - [Windows](#windows)
-  - [Zookeeper](#zookeeper)
   - [Kafka Broker](#kafka-broker)
   - [Criar novo tópico](#criar-um-novo-tópico)
   - [Primeiros testes](#primeiros-testes)
