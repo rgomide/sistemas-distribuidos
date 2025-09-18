@@ -49,7 +49,7 @@ log.segment.bytes=20000000
 Formatar o diretório de logs do Kafka:
 ```
 cd C:\kafka
-.\bin\windows\kafka-storage.bat format -t $(.\bin\windows\kafka-storage.bat random-uuid) -c .\config\server.properties --standalone
+.\bin\windows\kafka-storage.bat format -t "storage-key-id" -c .\config\server.properties --standalone
 
 ```
 
@@ -103,7 +103,7 @@ log.segment.bytes=20000000
 Formatar o diretório de logs do Kafka:
 ```
 cd ~/kafka
-./bin/kafka-storage.sh format -t $(./bin/kafka-storage.sh random-uuid) -c ./config/server.properties --standalone
+./bin/kafka-storage.sh format -t "storage-key-id" -c ./config/server.properties --standalone
 ```
 
 Inicialize o serviço executando o comando:
