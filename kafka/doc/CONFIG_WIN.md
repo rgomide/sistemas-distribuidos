@@ -42,7 +42,7 @@ cd C:\kafka
 
 ```
 cd C:\kafka
-.\bin\windows\kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092
+.\bin\windows\kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
 ```
 
 #### Flags disponíveis
@@ -50,6 +50,8 @@ cd C:\kafka
 - `--topic`: Nome do tópico.
 - `--bootstrap-server`: Endereço do broker.
 - `--describe`: Exibe informações sobre o tópico.
+- `--replication-factor`: Fator de replicação.
+- `--partitions`: Número de partições.
 
 ### Producer
 

@@ -29,15 +29,13 @@ cd ~/kafka
 ./bin/kafka-server-start.sh ./config/server.properties
 ```
 
-
-
 ## Primeiros testes
 
 ## Criar um novo tópico
 
 ```
 cd ~/kafka
-./bin/kafka-topics.sh --create --topic meu-topico --bootstrap-server localhost:9092
+./bin/kafka-topics.sh --create --topic meu-topico --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
 ```
 
 #### Flags disponíveis
@@ -45,6 +43,8 @@ cd ~/kafka
 - `--topic`: Nome do tópico.
 - `--bootstrap-server`: Endereço do broker.
 - `--describe`: Exibe informações sobre o tópico.
+- `--replication-factor`: Fator de replicação.
+- `--partitions`: Número de partições.
 
 ### Producer
 
