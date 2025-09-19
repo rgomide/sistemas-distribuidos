@@ -1,5 +1,13 @@
 # Linux/macOS
 
+## Sumário
+
+- [Kafka Broker](#kafka-broker)
+- [Criar um novo tópico](#criar-um-novo-tópico)
+- [Primeiros testes](#primeiros-testes)
+  - [Producer](#producer)
+  - [Consumer](#consumer)
+
 ## Kafka Broker
 
 Modifique as seguintes propriedades do arquivo `config\server.properties` para:
