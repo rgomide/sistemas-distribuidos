@@ -4,8 +4,9 @@
 
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Configurações](#configurações)
-- [Windows](./doc/CONFIG_WIN.md)
-- [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+  - [Windows](./doc/CONFIG_WIN.md)
+  - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+- [Referências](#referências)
 
 ## Estrutura do projeto
 
