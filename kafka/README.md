@@ -20,10 +20,12 @@ A Figura a seguir apresenta um esquema deste projeto:
 
 ## Configurações
 
-Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz).
+Certifique-se de que o seu sistema operacional possua o Java versão 17 ou superior instalado.
 
-- Windows: descompate os arquivos na pasta `C:\kafka`.
-- Linux/macOS: descompate os arquivos na pasta `~/kafka`.
+Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz). Descompacte os arquivos na pasta:
+
+- Windows: `C:\kafka`.
+- Linux/macOS: `~/kafka`.
 
 Siga as instruções de configuração para o seu sistema operacional:
 - [Windows](./doc/CONFIG_WIN.md)

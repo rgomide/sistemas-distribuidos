@@ -1,4 +1,4 @@
-# Windows
+# Configurações - Windows
 
 ## Sumário
 

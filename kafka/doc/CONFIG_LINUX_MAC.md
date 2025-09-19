@@ -1,4 +1,4 @@
-# Linux/macOS
+# Configurações - Linux/macOS
 
 ## Sumário
 
