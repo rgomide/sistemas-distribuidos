@@ -6,6 +6,7 @@
 - [Configurações do Apache Kafka](#configurações-do-apache-kafka)
   - [Windows](./doc/CONFIG_WIN.md)
   - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+- [Executando o Projeto](#executando-o-projeto)
 - [Referências](#referências)
 
 ## Estrutura do projeto
@@ -32,6 +33,8 @@ Siga as instruções de configuração para o seu sistema operacional:
 - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
 
 ## Executando o Projeto
+
+Certifique-se de que o Apache Kafka esteja em execução.
 
 Execute o comando para instalar as dependências:
 ```
