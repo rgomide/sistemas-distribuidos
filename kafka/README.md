@@ -3,19 +3,11 @@
 ## Sumário
 
 - [Estrutura do projeto](#estrutura-do-projeto)
-- [Configurações](#configurações)
-- [Windows](#windows)
-  - [Kafka Broker](#kafka-broker)
-  - [Criar novo tópico](#criar-um-novo-tópico)
-  - [Primeiros testes](#primeiros-testes)
-    - [Producer](#producer)
-    - [Consumer](#consumer)
-- [Linux/macOS](#linuxmacos)
-  - [Kafka Broker](#kafka-broker-1)
-  - [Criar novo tópico](#criar-um-novo-tópico-1)
-  - [Primeiros testes](#primeiros-testes-1)
-    - [Producer](#producer-1)
-    - [Consumer](#consumer-1)  
+- [Configurações do Apache Kafka](#configurações-do-apache-kafka)
+  - [Windows](./doc/CONFIG_WIN.md)
+  - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+- [Executando o Projeto](#executando-o-projeto)
+- [Referências](#referências)
 
 ## Estrutura do projeto
 
@@ -27,113 +19,41 @@ A Figura a seguir apresenta um esquema deste projeto:
 
 <img src="./assets/projectStructure.png"/>
 
-## Configurações
+## Configurações do Apache Kafka
 
-Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz).
+Certifique-se de que o seu sistema operacional possua o Java versão 17 ou superior instalado.
 
-- Windows: descompate os arquivos na pasta `C:\kafka`.
-- Linux/macOS: descompate os arquivos na pasta `~/kafka`.
+Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz). Descompacte os arquivos na pasta:
 
-## Windows
+- Windows: `C:\kafka`.
+- Linux/macOS: `~/kafka`.
 
-### Kafka Broker
+Siga as instruções de configuração para o seu sistema operacional:
+- [Windows](./doc/CONFIG_WIN.md)
+- [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
 
-Modifique as seguintes propriedades do arquivo `config\server.properties` para:
+## Executando o Projeto
 
+Certifique-se de que o Apache Kafka esteja em execução.
+
+Execute o comando para instalar as dependências:
 ```
-log.dirs=./kafka-logs
-offsets.topic.num.partitions=1
-log.segment.bytes=20000000
-```
-
-Formatar o diretório de logs do Kafka:
-```
-cd C:\kafka
-.\bin\windows\kafka-storage.bat format -t "storage-key-id" -c .\config\server.properties --standalone
-
+npm install
 ```
 
-Editar o arquivo `.\bin\windows\kafka-server-start.bat` com as seguintes instruções:
-- Adicione a palavra `rem` na linha `wmic os get osarchitecture | find /i "32-bit" >nul 2>&1`, ficando assim:
+Em uma instância do terminal, inicialize o servidor:
 ```
-rem wmic os get osarchitecture | find /i "32-bit" >nul 2>&1
-```
-
-Inicialize o serviço executando o comando:
-```
-cd C:\kafka
-.\bin\windows\kafka-server-start.bat .\config\server.properties
+npm run server
 ```
 
-### Criar um novo tópico
-
+Em outra instância do terminal, inicie o consumer:
 ```
-cd C:\kafka
-.\bin\windows\kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092
+npm run consumer
 ```
 
-### Primeiros testes
+Utilize um client de sua preferência para enviar uma mensagem para o endpoint `POST /enviar-mensagem`.
 
-#### Producer
-
-```
-cd C:\kafka
-.\bin\windows\kafka-console-producer.bat --topic meu-topico --bootstrap-server localhost:9092
-```
-
-#### Consumer
-
-```
-cd C:\kafka
-.\bin\windows\kafka-console-consumer.bat --topic meu-topico --from-beginning --bootstrap-server localhost:9092
-```
-
-## Linux/macOS
-
-
-### Kafka Broker
-
-Modifique as seguintes propriedades do arquivo `config\server.properties` para:
-```
-log.dirs=./kafka-logs
-offsets.topic.num.partitions=1
-log.segment.bytes=20000000
-```
-
-Formatar o diretório de logs do Kafka:
-```
-cd ~/kafka
-./bin/kafka-storage.sh format -t "storage-key-id" -c ./config/server.properties --standalone
-```
-
-Inicialize o serviço executando o comando:
-```
-cd ~/kafka
-./bin/kafka-server-start.sh ./config/server.properties
-```
-
-### Criar um novo tópico
-
-```
-cd ~/kafka
-./bin/kafka-topics.sh --create --topic meu-topico --bootstrap-server localhost:9092
-```
-
-### Primeiros testes
-
-#### Producer
-
-```
-cd ~/kafka
-./bin/kafka-console-producer.sh --topic meu-topico --bootstrap-server localhost:9092
-```
-
-#### Consumer
-
-```
-cd ~/kafka
-./bin/kafka-console-consumer.sh --topic meu-topico --from-beginning --bootstrap-server localhost:9092
-```
+A mensagem será publicada no stream de eventos e consumida pelo consumer.
 
 ## Referências
 - [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)
