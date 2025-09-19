@@ -36,15 +36,20 @@ Inicialize o serviço executando o comando:
 cd C:\kafka
 .\bin\windows\kafka-server-start.bat .\config\server.properties
 ```
+## Primeiros testes
 
-## Criar um novo tópico
+### Criar um novo tópico
 
 ```
 cd C:\kafka
 .\bin\windows\kafka-topics.bat --create --topic meu-topico --bootstrap-server localhost:9092
 ```
 
-## Primeiros testes
+#### Flags disponíveis
+- `--create`: Cria um novo tópico.
+- `--topic`: Nome do tópico.
+- `--bootstrap-server`: Endereço do broker.
+- `--describe`: Exibe informações sobre o tópico.
 
 ### Producer
 
@@ -53,9 +58,24 @@ cd C:\kafka
 .\bin\windows\kafka-console-producer.bat --topic meu-topico --bootstrap-server localhost:9092
 ```
 
+#### Flags disponíveis
+- `--topic`: Nome do tópico.
+- `--bootstrap-server`: Endereço do broker.
+- `--property "parse.key=true"`: Analisa a chave da mensagem.
+- `--property "key.separator=:"`: Separa a chave da mensagem a partir do caractere `:`.
+
 ### Consumer
 
 ```
 cd C:\kafka
 .\bin\windows\kafka-console-consumer.bat --topic meu-topico --from-beginning --bootstrap-server localhost:9092
 ```
+
+#### Flags disponíveis
+- `--topic`: Nome do tópico.
+- `--from-beginning`: Consome todas as mensagens do tópico.
+- `--bootstrap-server`: Endereço do broker.
+- `--group`: ID do grupo de consumidores.
+- `--offset`: Offset da mensagem.
+- `--property print.key=true`: Exibe a chave da mensagem.
+- `--property key.separator="-"`: Separa a chave da mensagem a partir do caractere `-`.
