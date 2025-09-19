@@ -41,12 +41,12 @@ Execute o comando para instalar as dependências:
 npm install
 ```
 
-Inicialize o servidor:
+Em uma instância do terminal, inicialize o servidor:
 ```
 npm run server
 ```
 
-Inicie o consumer:
+Em outra instância do terminal, inicie o consumer:
 ```
 npm run consumer
 ```
