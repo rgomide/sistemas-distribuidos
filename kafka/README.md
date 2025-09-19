@@ -3,7 +3,7 @@
 ## Sumário
 
 - [Estrutura do projeto](#estrutura-do-projeto)
-- [Configurações](#configurações)
+- [Configurações do Apache Kafka](#configurações-do-apache-kafka)
   - [Windows](./doc/CONFIG_WIN.md)
   - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
 - [Referências](#referências)
@@ -18,7 +18,7 @@ A Figura a seguir apresenta um esquema deste projeto:
 
 <img src="./assets/projectStructure.png"/>
 
-## Configurações
+## Configurações do Apache Kafka
 
 Certifique-se de que o seu sistema operacional possua o Java versão 17 ou superior instalado.
 
@@ -30,6 +30,27 @@ Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.
 Siga as instruções de configuração para o seu sistema operacional:
 - [Windows](./doc/CONFIG_WIN.md)
 - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+
+## Executando o Projeto
+
+Execute o comando para instalar as dependências:
+```
+npm install
+```
+
+Inicialize o servidor:
+```
+npm run server
+```
+
+Inicie o consumer:
+```
+npm run consumer
+```
+
+Utilize um client de sua preferência para enviar uma mensagem para o endpoint `POST /enviar-mensagem`.
+
+A mensagem será publicada no stream de eventos e consumida pelo consumer.
 
 ## Referências
 - [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)
