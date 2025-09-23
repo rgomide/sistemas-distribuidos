@@ -7,6 +7,7 @@
   - [Windows](./doc/CONFIG_WIN.md)
   - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
 - [Executando o Projeto](#executando-o-projeto)
+- [Exercícios](#exercícios)
 - [Referências](#referências)
 
 ## Estrutura do projeto
@@ -54,6 +55,49 @@ npm run consumer
 Utilize um client de sua preferência para enviar uma mensagem para o endpoint `POST /enviar-mensagem`.
 
 A mensagem será publicada no stream de eventos e consumida pelo consumer.
+
+## Exercícios
+
+### Configurando tópicos, produtores e consumidores
+
+1. Inicialize o serviço do Kafka e crie um tópico  chamado `topico-exercicio` com 3 partições utilizando o utilitário `kafka-topics` via terminal.
+2. Modifique o [consumer](./src/eventstream/consumer/consumer.js) para consumir as mensagens do tópico `topico-exercicio` e conecte-se ao broker utiliznado o groupId `grupo-exercicio`.
+3. Modifique o [producer](./src/eventstream/producer/producer.js) para publicar as mensagens no tópico `topico-exercicio`.
+4. Abra duas instâncias do terminal e em uma delas conecte como consumer (`kafka-console-consumer`) utilizando o group id `grupo-exercicio` e se inscreva no tópico `topico-exercicio`. Na segunda instância, conecte como consumer utilizando o group id `grupo-aleatorio` e se inscreva no tópico `topico-exercicio`.
+5. Execute os projetos em terminais distintos:
+```bash
+# Servidor de aplicação que publica as mensagens no Kafka
+npm run server
+
+# Consumer que consome as mensagens do Kafka
+npm run consumer
+```
+Ao todo, você deve ter 5 aplicações em execução:
+1. Kafka Broker
+2. Consumer 1 - group id `grupo-exercicio` (via terminal - `kafka-console-consumer` )
+3. Consumer 2 - group id `grupo-aleatorio` (via terminal - `kafka-console-consumer`)
+4. Server - aplicação que publica as mensagens no Kafka (`npm run server`)
+5. Consumer - aplicação que consome as mensagens do Kafka (`npm run consumer`)
+
+Com as aplicações em execução, abra algum client REST de sua preferência (ex.: Rapid API) e envie uma mensagem para o endpoint `POST /enviar-mensagem` com algum payload de sua preferência.
+
+Exemplo de requisição:
+
+`POST http://localhost:3000/enviar-mensagem`
+
+Payload:
+```json
+{
+  "id": 1,
+  "nome": "Denecley"
+}
+```
+
+Verifique se as mensagens foram publicadas no Kafka e consumidas corretamente pelos consumidores.
+
+Resumo da aplicação:
+
+![Resumo da aplicação](./doc/exercicio01.png)
 
 ## Referências
 - [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)

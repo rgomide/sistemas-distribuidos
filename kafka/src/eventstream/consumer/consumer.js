@@ -1,10 +1,13 @@
 const uuid = require('uuid')
 const kafka = require('../config/kafka-connector')
 
+// configurando o consumer
 const consumer = kafka.consumer({ groupId: uuid.v4() })
 
 const consumerModule = async () => {
   await consumer.connect()
+
+  // inscrevendo no tópico
   await consumer.subscribe({ topic: 'meu-topico', fromBeginning: true })
 
   await consumer.run({
