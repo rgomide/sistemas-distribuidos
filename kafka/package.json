@@ -1,7 +1,7 @@
 {
-  "name": "producer",
+  "name": "kafka-playground",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto didático para aprender Apache Kafka com Node.js - demonstra comunicação entre produtores e consumidores de mensagens",
   "main": "./src/server/server.js",
   "scripts": {
     "server": "nodemon",
