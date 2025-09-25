@@ -315,7 +315,7 @@ Crie scripts no `package.json` para facilitar a execução:
 
 ![Resumo da aplicação](./doc/exercicio02.png)
 
-#### Fluxo de Execução
+#### Fluxo de Execução:
 
 ![Fluxo de Execução](./doc/exercicio02Comunicacao.png)
 
