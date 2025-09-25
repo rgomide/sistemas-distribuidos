@@ -250,11 +250,11 @@ Timestamp: 2024-01-15T10:30:00Z
 -----------------------------------------
 ```
 
-#### Novos Endpoints no Servidor
+#### Novo Endpoint no Servidor
 
 Adicione o seguinte endpoint ao servidor:
 
-1. `POST /pedidos`: Criar novo pedido. Exemplo:
+1. `POST /pedidos`: Criar novo pedido. Exemplo de requisição:
    ```json
    {
      "clienteId": "CLI-67890",
@@ -264,6 +264,14 @@ Adicione o seguinte endpoint ao servidor:
          "quantidade": 2
        }
      ]
+   }
+   ```
+   Exemplo de resposta:
+   ```json
+   {
+     "success": true,
+     "message": "Pedido criado com sucesso",
+     "data": { "pedidoId": "PED-12345" }
    }
    ```
 
