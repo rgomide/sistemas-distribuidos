@@ -4,20 +4,20 @@ Um projeto didático para aprender os conceitos fundamentais do Apache Kafka atr
 
 ## Sumário
 
-1. [Sobre o Projeto](#sobre-o-projeto)
-2. [Pré-requisitos](#pré-requisitos)
-3. [Estrutura do projeto](#estrutura-do-projeto)
-4. [Configurações do Apache Kafka](#configurações-do-apache-kafka)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Pré-requisitos](#pré-requisitos)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Configurações do Apache Kafka](#configurações-do-apache-kafka)
   - [Windows](./doc/CONFIG_WIN.md)
   - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
-5. [Executando o Projeto](#executando-o-projeto)
-6. [Exercícios](#exercícios)
+- [Executando o Projeto](#executando-o-projeto)
+- [Exercícios](#exercícios)
   - [1 - Configurando tópicos, produtores e consumidores](#1---configurando-tópicos-produtores-e-consumidores)
   - [2 - Sistema de E-commerce com Múltiplos Tópicos](#2---sistema-de-e-commerce-com-múltiplos-tópicos)
-7. [Troubleshooting](#troubleshooting)
-8. [Referências](#referências)
+- [Troubleshooting](#troubleshooting)
+- [Referências](#referências)
 
-## 1. Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto foi desenvolvido com fins didáticos para demonstrar os conceitos fundamentais do Apache Kafka através de uma aplicação prática. A aplicação simula um sistema de mensageria onde:
 
