@@ -157,7 +157,7 @@ Cada tipo de evento deve ser processado por aplicações especializadas que pode
 
 Você deverá criar os seguintes tópicos:
 
-1. `pedidos-criados`: Eventos de novos pedidos. Exemplo:
+1. `pedidos-criados`: Eventos de novos pedidos. Exemplo de mensagem a ser publicada:
    ```json
    {
      "pedidoId": "PED-12345",
@@ -174,7 +174,7 @@ Você deverá criar os seguintes tópicos:
    }
    ```
 
-2. `pagamentos-processados`: Eventos de pagamento confirmado. Exemplo:
+2. `pagamentos-processados`: Eventos de pagamento confirmado. Exemplo de mensagem a ser publicada:
    ```json
    {
      "pagamentoId": "PAY-54321",
@@ -187,7 +187,7 @@ Você deverá criar os seguintes tópicos:
    }
    ```
 
-3. `estoque-atualizado`: Eventos de movimentação de estoque. Exemplo:
+3. `estoque-atualizado`: Eventos de movimentação de estoque. Exemplo de mensagem a ser publicada:
    ```json
    {
      "produtoId": "PROD-001",
@@ -199,7 +199,7 @@ Você deverá criar os seguintes tópicos:
    }
    ```
 
-4. `notificacoes-enviadas`: Eventos de comunicação. Exemplo:
+4. `notificacoes-enviadas`: Eventos de comunicação. Exemplo de mensagem a ser publicada:
    ```json
    {
      "notificacaoId": "NOT-98765",
@@ -215,22 +215,22 @@ Você deverá criar os seguintes tópicos:
 
 Crie as seguintes aplicações especializadas:
 
-1. **Processador de Estoque** (`src/eventstream/consumer/estoque-processor.js`)
+1. **Processador de Estoque** (`src/eventstream/consumer/estoqueProcessor.js`)
    - Consome: `pedidos-criados`
    - Responsabilidade: Atualizar estoque dos produtos
    - Publica em: `estoque-atualizado`
 
-2. **Processador de Pagamentos** (`src/eventstream/consumer/pagamento-processor.js`)
+2. **Processador de Pagamentos** (`src/eventstream/consumer/pagamentoProcessor.js`)
    - Consome: `pedidos-criados`
    - Responsabilidade: Simular processamento de pagamento
    - Publica em: `pagamentos-processados`
 
-3. **Serviço de Notificações** (`src/eventstream/consumer/notificacao-processor.js`)
+3. **Serviço de Notificações** (`src/eventstream/consumer/notificacaoProcessor.js`)
    - Consome: `pagamentos-processados`
    - Responsabilidade: Enviar confirmações por email/SMS
    - Publica em: `notificacoes-enviadas`
 
-4. **Analytics Dashboard** (`src/eventstream/consumer/analytics-processor.js`)
+4. **Analytics Dashboard** (`src/eventstream/consumer/analyticsProcessor.js`)
    - Consome: `pedidos-criados`, `pagamentos-processados`, `estoque-atualizado`
    - Responsabilidade: Gerar relatórios e métricas em tempo real
    - Não publica em outros tópicos (apenas consome)
