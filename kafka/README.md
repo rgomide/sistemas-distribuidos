@@ -235,6 +235,21 @@ Crie as seguintes aplicações especializadas:
    - Responsabilidade: Gerar relatórios e métricas em tempo real
    - Não publica em outros tópicos (apenas consome)
 
+Represente as responsabilidades de cada aplicação utilizando saídas de terminal via comando `console.log`. Exemplo:
+```bash
+-----------------------------------------
+Applicacao 1: Processador de Estoque
+🔍 Consumindo mensagens do tópico: pedidos-criados
+📄 Mensagem recebida:
+📍 Topic: pedidos-criados
+Pedido ID: PED-12345
+Cliente ID: CLI-67890
+Itens: [{ produtoId: 'PROD-001', quantidade: 2, preco: 29.99 }]
+Valor Total: 59.98
+Timestamp: 2024-01-15T10:30:00Z
+-----------------------------------------
+```
+
 #### Novos Endpoints no Servidor
 
 Adicione o seguinte endpoint ao servidor:
