@@ -290,12 +290,12 @@ Crie scripts no `package.json` para facilitar a execução:
 ```json
 {
   "scripts": {
-    "server": "node src/server/server.js",
+    "server": "nodemon",
     "consumer": "node src/eventstream/consumer/runConsumer.js",
-    "estoque-processor": "node src/eventstream/consumer/estoque-processor.js",
-    "pagamento-processor": "node src/eventstream/consumer/pagamento-processor.js",
-    "notificacao-processor": "node src/eventstream/consumer/notificacao-processor.js",
-    "analytics-processor": "node src/eventstream/consumer/analytics-processor.js"
+    "estoque-processor": "node ./src/eventstream/consumer/runEstoqueProcessor.js",
+    "pagamento-processor": "node ./src/eventstream/consumer/runPagamentoProcessor.js",
+    "notificacao-processor": "node ./src/eventstream/consumer/runNotificacaoProcessor.js",
+    "analytics-processor": "node ./src/eventstream/consumer/runAnalyticsProcessor.js"
   }
 }
 ```
