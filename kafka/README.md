@@ -311,9 +311,13 @@ Crie scripts no `package.json` para facilitar a execução:
 5. Serviço de Notificações consome eventos de pagamento e envia confirmação
 6. Analytics Dashboard consome todos os eventos para gerar métricas
 
-Resumo da aplicação:
+#### Resumo da aplicação:
 
 ![Resumo da aplicação](./doc/exercicio02.png)
+
+#### Fluxo de Execução
+
+![Fluxo de Execução](./doc/exercicio02Comunicacao.png)
 
 ## Troubleshooting
 
