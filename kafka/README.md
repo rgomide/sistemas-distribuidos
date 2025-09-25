@@ -12,6 +12,8 @@ Um projeto didático para aprender os conceitos fundamentais do Apache Kafka atr
   - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
 - [Executando o Projeto](#executando-o-projeto)
 - [Exercícios](#exercícios)
+  - [1 - Configurando tópicos, produtores e consumidores](#1---configurando-tópicos-produtores-e-consumidores)
+  - [2 - Sistema de E-commerce com Múltiplos Tópicos](#2---sistema-de-e-commerce-com-múltiplos-tópicos)
 - [Troubleshooting](#troubleshooting)
 - [Referências](#referências)
 
