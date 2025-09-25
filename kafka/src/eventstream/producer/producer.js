@@ -52,6 +52,8 @@ const enviarMensagem = async (mensagem) => {
   } catch (error) {
     console.error('❌ Erro ao enviar mensagem:', error)
     throw error
+  } finally {
+    console.log('\n')
   }
 }
 

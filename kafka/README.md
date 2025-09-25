@@ -96,7 +96,7 @@ A mensagem será publicada no stream de eventos e consumida pelo consumer.
 
 ## Exercícios
 
-### Configurando tópicos, produtores e consumidores
+### 1 - Configurando tópicos, produtores e consumidores
 
 1. Inicialize o serviço do Kafka e crie um tópico  chamado `topico-exercicio` com 3 partições utilizando o utilitário `kafka-topics` via terminal.
 2. Modifique o [consumer](./src/eventstream/consumer/consumer.js) para consumir as mensagens do tópico `topico-exercicio` e conecte-se ao broker utiliznado o groupId `grupo-exercicio`.
@@ -136,6 +136,174 @@ Verifique se as mensagens foram publicadas no Kafka e consumidas corretamente pe
 Resumo da aplicação:
 
 ![Resumo da aplicação](./doc/exercicio01.png)
+
+### 2 - Sistema de E-commerce com Múltiplos Tópicos
+
+Neste exercício, você irá implementar um sistema de e-commerce completo utilizando múltiplos tópicos Kafka para diferentes tipos de eventos. O sistema simulará um marketplace onde diferentes aplicações processam eventos específicos de acordo com sua responsabilidade.
+
+#### Contexto do Problema
+
+Imagine um sistema de e-commerce que precisa processar diferentes tipos de eventos de forma independente e escalável:
+
+- **Pedidos**: Quando um cliente finaliza uma compra
+- **Pagamentos**: Processamento de transações financeiras
+- **Estoque**: Controle de produtos disponíveis
+- **Notificações**: Comunicação com clientes (email, SMS)
+- **Relatórios**: Análise de dados para business intelligence
+
+Cada tipo de evento deve ser processado por aplicações especializadas que podem ter diferentes velocidades de processamento e requisitos de escalabilidade.
+
+#### Tópicos e Tipos de Mensagens
+
+Você deverá criar os seguintes tópicos:
+
+1. `pedidos-criados`: Eventos de novos pedidos. Exemplo:
+   ```json
+   {
+     "pedidoId": "PED-12345",
+     "clienteId": "CLI-67890",
+     "itens": [
+       {
+         "produtoId": "PROD-001",
+         "quantidade": 2,
+         "preco": 29.99
+       }
+     ],
+     "valorTotal": 59.98,
+     "timestamp": "2024-01-15T10:30:00Z"
+   }
+   ```
+
+2. `pagamentos-processados`: Eventos de pagamento confirmado. Exemplo:
+   ```json
+   {
+     "pagamentoId": "PAY-54321",
+     "pedidoId": "PED-12345",
+     "clienteId": "CLI-67890",
+     "valor": 59.98,
+     "metodo": "cartao_credito",
+     "status": "aprovado",
+     "timestamp": "2024-01-15T10:32:00Z"
+   }
+   ```
+
+3. `estoque-atualizado`: Eventos de movimentação de estoque. Exemplo:
+   ```json
+   {
+     "produtoId": "PROD-001",
+     "quantidadeAnterior": 100,
+     "quantidadeAtual": 98,
+     "movimento": "saida",
+     "pedidoId": "PED-12345",
+     "timestamp": "2024-01-15T10:35:00Z"
+   }
+   ```
+
+4. `notificacoes-enviadas`: Eventos de comunicação. Exemplo:
+   ```json
+   {
+     "notificacaoId": "NOT-98765",
+     "clienteId": "CLI-67890",
+     "tipo": "email",
+     "assunto": "Pedido Confirmado",
+     "status": "enviado",
+     "timestamp": "2024-01-15T10:36:00Z"
+   }
+   ```
+
+#### Aplicações Consumidoras
+
+Crie as seguintes aplicações especializadas:
+
+1. **Processador de Estoque** (`src/eventstream/consumer/estoque-processor.js`)
+   - Consome: `pedidos-criados`
+   - Responsabilidade: Atualizar estoque dos produtos
+   - Publica em: `estoque-atualizado`
+
+2. **Processador de Pagamentos** (`src/eventstream/consumer/pagamento-processor.js`)
+   - Consome: `pedidos-criados`
+   - Responsabilidade: Simular processamento de pagamento
+   - Publica em: `pagamentos-processados`
+
+3. **Serviço de Notificações** (`src/eventstream/consumer/notificacao-processor.js`)
+   - Consome: `pagamentos-processados`
+   - Responsabilidade: Enviar confirmações por email/SMS
+   - Publica em: `notificacoes-enviadas`
+
+4. **Analytics Dashboard** (`src/eventstream/consumer/analytics-processor.js`)
+   - Consome: `pedidos-criados`, `pagamentos-processados`, `estoque-atualizado`
+   - Responsabilidade: Gerar relatórios e métricas em tempo real
+   - Não publica em outros tópicos (apenas consome)
+
+Represente as responsabilidades de cada aplicação utilizando saídas de terminal via comando `console.log`. Exemplo:
+```bash
+-----------------------------------------
+Applicacao 1: Processador de Estoque
+🔍 Consumindo mensagens do tópico: pedidos-criados
+📄 Mensagem recebida:
+📍 Topic: pedidos-criados
+Pedido ID: PED-12345
+Cliente ID: CLI-67890
+Itens: [{ produtoId: 'PROD-001', quantidade: 2, preco: 29.99 }]
+Valor Total: 59.98
+Timestamp: 2024-01-15T10:30:00Z
+-----------------------------------------
+```
+
+#### Novos Endpoints no Servidor
+
+Adicione o seguinte endpoint ao servidor:
+
+1. `POST /pedidos`: Criar novo pedido. Exemplo:
+   ```json
+   {
+     "clienteId": "CLI-67890",
+     "itens": [
+       {
+         "produtoId": "PROD-001",
+         "quantidade": 2
+       }
+     ]
+   }
+   ```
+
+#### Objetivos do Exercício
+
+1. **Configurar os tópicos**: Crie todos os tópicos necessários com configurações apropriadas
+2. **Implementar os producers**: Modifique o producer para enviar mensagens para tópicos específicos
+3. **Criar os consumers especializados**: Implemente cada processador com sua lógica específica
+4. **Expandir o servidor**: Adicione os novos endpoints com validações e respostas adequadas
+5. **Testar o fluxo completo**: Simule um pedido completo e verifique o processamento em cascata
+
+#### Scripts de Execução
+
+Crie scripts no `package.json` para facilitar a execução:
+
+```json
+{
+  "scripts": {
+    "server": "node src/server/server.js",
+    "consumer": "node src/eventstream/consumer/runConsumer.js",
+    "estoque-processor": "node src/eventstream/consumer/estoque-processor.js",
+    "pagamento-processor": "node src/eventstream/consumer/pagamento-processor.js",
+    "notificacao-processor": "node src/eventstream/consumer/notificacao-processor.js",
+    "analytics-processor": "node src/eventstream/consumer/analytics-processor.js"
+  }
+}
+```
+
+#### Fluxo de Execução Esperado
+
+1. Cliente faz pedido via `POST /pedidos`
+2. Sistema publica evento em `pedidos-criados`
+3. Processador de Estoque consome e atualiza estoque
+4. Processador de Pagamentos consome e processa pagamento
+5. Serviço de Notificações consome eventos de pagamento e envia confirmação
+6. Analytics Dashboard consome todos os eventos para gerar métricas
+
+Resumo da aplicação:
+
+![Resumo da aplicação](./doc/exercicio02.png)
 
 ## Troubleshooting
 
