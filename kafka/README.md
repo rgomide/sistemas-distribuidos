@@ -10,6 +10,7 @@ Um projeto didático para aprender os conceitos fundamentais do Apache Kafka atr
 - [Configurações do Apache Kafka](#configurações-do-apache-kafka)
   - [Windows](./doc/CONFIG_WIN.md)
   - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+  - [Docker](./doc/CONFIG_DOCKER.md)
 - [Executando o Projeto](#executando-o-projeto)
 - [Exercícios](#exercícios)
   - [1 - Configurando tópicos, produtores e consumidores](#1---configurando-tópicos-produtores-e-consumidores)
@@ -72,6 +73,7 @@ Faça o download do [Apache Kafka](https://dlcdn.apache.org/kafka/4.1.0/kafka_2.
 Siga as instruções de configuração para o seu sistema operacional:
 - [Windows](./doc/CONFIG_WIN.md)
 - [Linux/macOS](./doc/CONFIG_LINUX_MAC.md)
+- [Docker](./doc/CONFIG_DOCKER.md)
 
 ## Executando o Projeto
 
