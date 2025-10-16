@@ -18,23 +18,23 @@ Assim, o orquestrador é responsável por chamar cada serviço participante na s
 # Microserviços a serem Desenvolvidos
 Será necessário criar 4 aplicações simples em sua stack de preferência (por exemplo, 4 projetos com Express/Node.js, Flask/Python ou Spring Boot/Java):
 
-## Serviço de Orquestração (servico-orquestrador)
+## 1. Serviço de Orquestração (servico-orquestrador)
 
 - `Função`: Ponto de entrada da saga. Recebe a requisição para criar um novo pedido e coordena as chamadas síncronas para os outros serviços. É o único serviço que conhece todo o fluxo de negócio. Em caso de falha, é sua responsabilidade invocar as transações de compensação.
 
-## Serviço de Pedidos (servico-pedidos)
+## 2. Serviço de Pedidos (servico-pedidos)
 
 - `Função`: Gerencia o ciclo de vida dos pedidos. Armazena os pedidos em memória (um simples dicionário ou lista).
 - `Transação Local`: Cria um pedido com status `PENDENTE`.
 - `Transação de Compensação`: Altera o status do pedido para `CANCELADO`.
 
-## Serviço de Pagamentos (servico-pagamentos)
+## 3. Serviço de Pagamentos (servico-pagamentos)
 
 - `Função`: Simula o processamento de pagamentos. Armazena os pagamentos aprovados em memória.
 - `Transação Local`: Aprova um pagamento. Para simular falhas, ele pode ser programado para recusar pagamentos de um produto específico (ex: `produtoId: 0`).
 - `Transação de Compensação`: Realiza o estorno (reembolso) de um pagamento previamente aprovado.
 
-## Serviço de Estoque (servico-estoque)
+## 4. Serviço de Estoque (servico-estoque)
 
 - `Função`: Gerencia a quantidade de produtos disponíveis. Armazena o inventário em memória (ex: um dicionário `{"produtoId": quantidade}`).
 - `Transação Local`: Debita a quantidade de um produto do estoque. Pode falhar se não houver estoque suficiente.
