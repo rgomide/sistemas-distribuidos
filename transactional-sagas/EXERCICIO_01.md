@@ -1,3 +1,14 @@
+# Exercício 01 - Simulando Epic Saga (sao) - Processamento de Pedidos
+
+# Sumário
+- [Objetivo da Atividade](#objetivo-da-atividade)
+- [Problema a ser Resolvido](#problema-a-ser-resolvido)
+- [Arquitetura Proposta - Epic Saga (sao)](#arquitetura-proposta---epic-saga-sao)
+- [Microserviços a serem Desenvolvidos](#microserviços-a-serem-desenvolvidos)
+- [Contratos e Endpoints das APIs](#contratos-e-endpoints-das-apis)
+- [Simulação de Falha](#simulação-de-falha)
+- [Fluxo de execução esperado](#fluxo-de-execução-esperado)
+
 # Objetivo da Atividade
 Desenvolver um conjunto de microserviços para simular o processamento de um pedido em um e-commerce. Implementar o padrão Epic Saga (sao) para garantir a consistência da operação, incluindo o tratamento de falhas através de transações de compensação.
 
