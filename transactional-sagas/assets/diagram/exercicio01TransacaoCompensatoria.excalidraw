@@ -28,7 +28,7 @@
       "version": 664,
       "versionNonce": 121098829,
       "isDeleted": false,
-      "boundElements": null,
+      "boundElements": [],
       "updated": 1760631108122,
       "link": null,
       "locked": false
@@ -1410,8 +1410,8 @@
         "type": 2
       },
       "seed": 502012127,
-      "version": 737,
-      "versionNonce": 1420437407,
+      "version": 739,
+      "versionNonce": 1507974960,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1419,7 +1419,7 @@
           "id": "TdrMfx7VWYyvDXBVkT2ya"
         }
       ],
-      "updated": 1760624729936,
+      "updated": 1760651606006,
       "link": null,
       "locked": false,
       "points": [
@@ -1447,8 +1447,8 @@
         "focus": -0.38875821232502317,
         "gap": 6.66136001000298
       },
-      "startArrowhead": null,
-      "endArrowhead": "arrow",
+      "startArrowhead": "arrow",
+      "endArrowhead": null,
       "elbowed": false
     },
     {
@@ -1511,7 +1511,7 @@
       "version": 421,
       "versionNonce": 1195990243,
       "isDeleted": false,
-      "boundElements": null,
+      "boundElements": [],
       "updated": 1760631116663,
       "link": null,
       "locked": false,

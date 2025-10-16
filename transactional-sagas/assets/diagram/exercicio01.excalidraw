@@ -1161,8 +1161,8 @@
         "type": 2
       },
       "seed": 502012127,
-      "version": 738,
-      "versionNonce": 1456094321,
+      "version": 740,
+      "versionNonce": 723359807,
       "isDeleted": false,
       "boundElements": [
         {
@@ -1170,7 +1170,7 @@
           "id": "TdrMfx7VWYyvDXBVkT2ya"
         }
       ],
-      "updated": 1760648951486,
+      "updated": 1760651577590,
       "link": null,
       "locked": false,
       "points": [
@@ -1198,8 +1198,8 @@
         "focus": -0.38875821232502317,
         "gap": 6.66136001000298
       },
-      "startArrowhead": null,
-      "endArrowhead": "arrow",
+      "startArrowhead": "arrow",
+      "endArrowhead": null,
       "elbowed": false
     },
     {
