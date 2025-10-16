@@ -21,7 +21,7 @@ Em um sistema de e-commerce, o processo de "fechar um pedido" envolve três etap
 
 Todas essas etapas devem ocorrer de forma **atômica** do ponto de vista do negócio. Se qualquer uma delas falhar, o sistema inteiro deve ser revertido para o estado anterior, como se a transação nunca tivesse ocorrido.
 
-# Arquitetura Proposta - Epic Saga (sao)
+# Saga Transacional - Epic Saga (sao)
 A Epic Saga (sao) é um padrão de arquitetura que utiliza comunicação **síncrona**, consistência transacional **atômica** e a coordenação de transações é realizada por um serviço central chamado de **orquestrador**.
 
 Assim, o orquestrador é responsável por chamar cada serviço participante na sequência correta e gerenciar qualquer falha que possa ocorrer.
