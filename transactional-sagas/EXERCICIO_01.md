@@ -43,8 +43,8 @@ Será necessário criar 4 aplicações simples em sua stack de preferência (por
 # Contratos e Endpoints das APIs
 
 ## 1. Serviço de Orquestração (servico-orquestrador)
-### Endpoint `POST /pedidos`
-Inicia a saga para a criação de um novo pedido.
+### Endpoint `POST /processar-pedido`
+Inicia a saga para a criação e processamento de um novo pedido.
 
 #### Contrato de Entrada (Request Body):
 
@@ -186,3 +186,26 @@ Libera uma reserva de estoque.
   "estoque_restante": 100
 }
 ```
+
+# Simulação de Falha
+
+Para simular uma falha, você pode programar o serviço de pagamentos para recusar pagamentos a partir de valores específicos, como por exemplo:
+- `produtoId: 0`: Produz uma falha no serviço de pedidos.
+- `valor: 1000`: Produz uma falha no serviço de pagamentos.
+- `quantidade: 500`: Produz uma falha no serviço de estoque.
+
+# Fluxo de execução esperado
+
+![Fluxo de execução esperado](./assets/diagram/exercicio01.png)
+
+- Cliente faz pedido via `POST /processar-pedido`
+- Serviço de Orquestração chama `POST /pedidos`
+- Serviço de Pedidos cria pedido com status `PENDENTE`
+- Serviço de Orquestração chama `POST /pagamentos`
+- Serviço de Pagamentos processa pagamento
+- Serviço de Orquestração chama `POST /estoque/reserva`
+- Serviço de Estoque reserva estoque
+- Serviço de Orquestração chama `PUT /pedidos/{id}/status`
+- Serviço de Pedidos atualiza status do pedido para `CONFIRMADO`
+- Serviço de Orquestração chama `POST /estoque/liberacao`
+- Serviço de Estoque libera estoque
