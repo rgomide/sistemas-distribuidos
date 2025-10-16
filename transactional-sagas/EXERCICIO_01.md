@@ -7,7 +7,7 @@
 - [Microserviços a serem Desenvolvidos](#microserviços-a-serem-desenvolvidos)
 - [Contratos e Endpoints das APIs](#contratos-e-endpoints-das-apis)
 - [Simulação de Falha](#simulação-de-falha)
-- [Fluxo de execução esperado](#fluxo-de-execução-esperado)
+- [Exemplos de fluxo de execução](#exemplos-de-fluxo-de-execução)
 
 # Objetivo da Atividade
 Desenvolver um conjunto de microserviços para simular o processamento de um pedido em um e-commerce. Implementar o padrão Epic Saga (sao) para garantir a consistência da operação, incluindo o tratamento de falhas através de transações de compensação.
@@ -205,18 +205,10 @@ Para simular uma falha, você pode programar o serviço de pagamentos para recus
 - `valor: 1000`: Produz uma falha no serviço de pagamentos.
 - `quantidade: 500`: Produz uma falha no serviço de estoque.
 
-# Fluxo de execução esperado
+# Exemplos de fluxo de execução
 
-![Fluxo de execução esperado](./assets/diagram/exercicio01.png)
+## Fluxo de execução com sucesso
+![Fluxo de execução com sucesso](./assets/diagram/exercicio01.png)
 
-- Cliente faz pedido via `POST /processar-pedido`
-- Serviço de Orquestração chama `POST /pedidos`
-- Serviço de Pedidos cria pedido com status `PENDENTE`
-- Serviço de Orquestração chama `POST /pagamentos`
-- Serviço de Pagamentos processa pagamento
-- Serviço de Orquestração chama `POST /estoque/reserva`
-- Serviço de Estoque reserva estoque
-- Serviço de Orquestração chama `PUT /pedidos/{id}/status`
-- Serviço de Pedidos atualiza status do pedido para `CONFIRMADO`
-- Serviço de Orquestração chama `POST /estoque/liberacao`
-- Serviço de Estoque libera estoque
+## Fluxo de execução com transação compensatória
+![Fluxo de execução com transação compensatória](./assets/diagram/exercicio01TransacaoCompensatoria.png)
