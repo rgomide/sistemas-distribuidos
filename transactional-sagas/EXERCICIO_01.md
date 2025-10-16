@@ -41,3 +41,148 @@ Será necessário criar 4 aplicações simples em sua stack de preferência (por
 - `Transação de Compensação`: Devolve a quantidade de um produto ao estoque (libera a reserva).
 
 # Contratos e Endpoints das APIs
+
+## 1. Serviço de Orquestração (servico-orquestrador)
+### Endpoint `POST /pedidos`
+Inicia a saga para a criação de um novo pedido.
+
+#### Contrato de Entrada (Request Body):
+
+```json
+{
+  "clienteId": "cliente-123",
+  "produtoId": "produto-abc",
+  "quantidade": 1,
+  "valor": 150.00
+}
+```
+#### Contrato de Saída (Response Body - Sucesso 201 Created):
+
+```json
+{
+  "pedidoId": "uuid-gerado-pelo-servico-de-pedidos",
+  "status": "PEDIDO_CONFIRMADO"
+}
+```
+#### Contrato de Saída (Response Body - Falha 500 Internal Server Error):
+
+```json
+{
+  "erro": "A saga falhou",
+  "motivo": "Ex: Saldo insuficiente no estoque",
+  "pedidoId": "uuid-do-pedido-cancelado"
+}
+```
+## 2. Serviço de Pedidos (servico-pedidos)
+### Endpoint `POST /pedidos`
+
+Cria um novo pedido com status PENDENTE.
+
+#### Contrato de Entrada: (O mesmo do Orquestrador)
+```json
+{
+  "clienteId": "cliente-123",
+  "produtoId": "produto-abc",
+  "quantidade": 1,
+  "valor": 150.00
+}
+```
+
+#### Contrato de Saída (201 Created):
+```json
+{
+  "pedidoId": "uuid-gerado-1",
+  "status": "PENDENTE"
+}
+```
+
+### Endpoint `PUT /pedidos/{id}/status`
+
+Atualiza o status de um pedido (usado pelo orquestrador no final da saga ou na compensação).
+
+#### Contrato de Entrada:
+```json
+{
+  "status": "CONFIRMADO" // ou "CANCELADO"
+}
+```
+#### Contrato de Saída (200 OK):
+
+```json
+{
+  "pedidoId": "{id}",
+  "status": "CONFIRMADO" // ou "CANCELADO"
+}
+```
+
+## 3. Serviço de Pagamentos (servico-pagamentos)
+### Endpoint `POST /pagamentos`
+
+Processa um pagamento.
+
+#### Contrato de Entrada:
+```json
+{
+  "pedidoId": "uuid-gerado-1",
+  "produtoId": "produto-abc", // Para simular falha
+  "valor": 150.00
+}
+```
+
+#### Contrato de Saída (201 Created):
+```json
+{
+  "pagamentoId": "uuid-pagamento-1",
+  "status": "APROVADO"
+}
+```
+#### Falha: Retornar 400 Bad Request se o pagamento for recusado.
+
+### Endpoint de Compensação: `POST /pagamentos/{id}/reembolso`
+
+Reembolsa um pagamento.
+
+#### Contrato de Saída (200 OK):
+```json
+{
+  "pagamentoId": "{id}",
+  "status": "REEMBOLSADO"
+}
+```
+
+## 4. Serviço de Estoque (servico-estoque)
+### Endpoint `POST /estoque/reserva`
+Reserva (debita) itens do estoque.
+
+#### Contrato de Entrada:
+
+```json
+{
+  "pedidoId": "uuid-gerado-1",
+  "produtoId": "produto-abc",
+  "quantidade": 1
+}
+```
+#### Contrato de Saída (200 OK):
+```json
+{
+  "produtoId": "produto-abc",
+  "estoque_restante": 99
+}
+```
+#### Falha: Retornar 400 Bad Request se não houver estoque.
+
+### Endpoint de Compensação: `POST /estoque/liberacao`
+
+Libera uma reserva de estoque.
+
+#### Contrato de Entrada: (Mesmo de /reserva)
+
+#### Contrato de Saída (200 OK):
+
+```json
+{
+  "produtoId": "produto-abc",
+  "estoque_restante": 100
+}
+```
