@@ -6,7 +6,7 @@ public class Main {
     System.out.println("INÍCIO");
     long tempoInicio = System.currentTimeMillis();
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 10; i++) {
       HeavyProcess.justDoIt(i);
     }
 
